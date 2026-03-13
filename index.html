@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JROBS Musique — Demande de Musicien</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo-mark">✦ Depuis 2010 ✦</div>
+    <h1>JROBS<span>Musique</span></h1>
+    <p class="hero-sub">Musiciens professionnels pour vos événements</p>
+    <div class="deco-line">
+      <div class="deco-diamond"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p class="cta-intro">
+      Donnez vie à votre événement avec nos musiciens d'exception.
+      Pianistes, guitaristes, bassistes, batteurs et saxophonistes
+      disponibles pour vos occasions spéciales.
+    </p>
+
+    <button class="btn-open" onclick="openModal()">
+      <span>Faire une demande</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <div class="instruments">
+      <div class="instrument-item">
+        <div class="instrument-icon">🎹</div>
+        Pianiste
+      </div>
+      <div class="instrument-item">
+        <div class="instrument-icon">🎸</div>
+        Guitariste
+      </div>
+      <div class="instrument-item">
+        <div class="instrument-icon">🎸</div>
+        Bassiste
+      </div>
+      <div class="instrument-item">
+        <div class="instrument-icon">🥁</div>
+        Batteur
+      </div>
+      <div class="instrument-item">
+        <div class="instrument-icon">🎷</div>
+        Saxophoniste
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+
+      <div id="formContent">
+        <div class="modal-header">
+          <div class="modal-label">✦ Demande de musicien</div>
+          <div class="modal-title">Réservation de service</div>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+
+        <form id="reservationForm" novalidate>
+          <div class="form-body">
+            <!-- SERVICE -->
+            <div class="form-section-title">Service souhaité — sélectionnez le nombre de musiciens</div>
+            <div class="service-grid" id="serviceGrid">
+              <div class="service-card" id="card-Pianiste">
+                <span class="svc-icon">🎹</span>
+                <span class="svc-name">Pianiste</span>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="changeQty('Pianiste', -1)">−</button>
+                  <div class="qty-display" id="qty-Pianiste">0</div>
+                  <button type="button" class="qty-btn" onclick="changeQty('Pianiste', 1)">+</button>
+                </div>
+              </div>
+              <div class="service-card" id="card-Guitariste">
+                <span class="svc-icon">🎸</span>
+                <span class="svc-name">Guitariste</span>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="changeQty('Guitariste', -1)">−</button>
+                  <div class="qty-display" id="qty-Guitariste">0</div>
+                  <button type="button" class="qty-btn" onclick="changeQty('Guitariste', 1)">+</button>
+                </div>
+              </div>
+              <div class="service-card" id="card-Bassiste">
+                <span class="svc-icon">🎸</span>
+                <span class="svc-name">Bassiste</span>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="changeQty('Bassiste', -1)">−</button>
+                  <div class="qty-display" id="qty-Bassiste">0</div>
+                  <button type="button" class="qty-btn" onclick="changeQty('Bassiste', 1)">+</button>
+                </div>
+              </div>
+              <div class="service-card" id="card-Batteur">
+                <span class="svc-icon">🥁</span>
+                <span class="svc-name">Batteur</span>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="changeQty('Batteur', -1)">−</button>
+                  <div class="qty-display" id="qty-Batteur">0</div>
+                  <button type="button" class="qty-btn" onclick="changeQty('Batteur', 1)">+</button>
+                </div>
+              </div>
+              <div class="service-card" id="card-Saxophoniste">
+                <span class="svc-icon">🎷</span>
+                <span class="svc-name">Saxophoniste</span>
+                <div class="qty-control">
+                  <button type="button" class="qty-btn" onclick="changeQty('Saxophoniste', -1)">−</button>
+                  <div class="qty-display" id="qty-Saxophoniste">0</div>
+                  <button type="button" class="qty-btn" onclick="changeQty('Saxophoniste', 1)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="musicians-summary" id="musiciansSummary"></div>
+
+            <!-- éVéNEMENT -->
+            <div class="form-section-title">Détails de l'événement</div>
+            <div class="form-row triple">
+              <div class="form-group">
+                <label for="date">Date *</label>
+                <input type="date" id="date" required>
+              </div>
+              <div class="form-group">
+                <label for="heure">Heure de début *</label>
+                <input type="time" id="heure" required>
+              </div>
+              <div class="form-group">
+                <label for="duree">Durée *</label>
+                <select id="duree" required>
+                  <option value="" disabled selected>Choisir</option>
+                  <option value="1h">1 heure</option>
+                  <option value="2h">2 heures</option>
+                  <option value="3h">3 heures</option>
+                  <option value="4h">4 heures</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- COORDONNéES -->
+            <div class="form-section-title">Coordonnées</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" placeholder="Dupont" required>
+                <span class="field-error" id="err-nom">Nom invalide (lettres, espaces et tirets seulement)</span>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" placeholder="Marie" required>
+                <span class="field-error" id="err-prenom">Prénom invalide (lettres, espaces et tirets seulement)</span>
+              </div>
+            </div>
+
+            <div class="form-row single">
+              <div class="form-group">
+                <label for="adresse">Adresse *</label>
+                <input type="text" id="adresse" placeholder="123 Rue Sainte-Catherine, Montréal, QC" required>
+                <span class="field-error" id="err-adresse">Adresse invalide (min. 5 caractères)</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="responsable">Responsable</label>
+                <input type="text" id="responsable" placeholder="Nom du responsable">
+                <span class="field-error" id="err-responsable">Nom invalide (lettres, espaces et tirets
+                  seulement)</span>
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone *</label>
+                <input type="tel" id="telephone" placeholder="514-555-0123" required>
+                <span class="field-error" id="err-telephone">Format invalide (ex: 514-555-0123 ou +1 514 555
+                  0123)</span>
+              </div>
+            </div>
+
+            <div class="form-row single">
+              <div class="form-group">
+                <label for="courriel">Courriel *</label>
+                <input type="email" id="courriel" placeholder="marie@exemple.com" required>
+                <span class="field-error" id="err-courriel">Adresse courriel invalide</span>
+              </div>
+            </div>
+
+            <div class="form-row single">
+              <div class="form-group">
+                <label for="note">Note / Commentaires</label>
+                <textarea id="note"
+                  placeholder="Informations supplémentaires sur votre événement, demandes spéciales..."></textarea>
+              </div>
+            </div>
+
+            <!-- POLITIQUES -->
+            <div class="form-section-title">Politiques et conditions</div>
+            <div class="policies-box">
+              <strong style="color: var(--cream);">Politiques de réservation JROBS Musique</strong><br><br>
+              <strong>1. Confirmation :</strong> Toute réservation est confirmée à la réception d'un acompte de 50% du
+              montant total.<br><br>
+              <strong>2. Annulation :</strong> Toute annulation effectuée moins de 72 heures avant l'événement ne sera
+              pas
+              remboursée. Pour les annulations au-delà de 72 heures, l'acompte sera remboursé en totalité.<br><br>
+              <strong>3. Déplacement :</strong> Les frais de déplacement hors de l'île de Montréal sont à la charge du
+              client et seront calculés selon la distance.<br><br>
+              <strong>4. équipement :</strong> JROBS Musique fournit l'équipement de base. Tout équipement
+              supplémentaire
+              requis doit être mentionné au moment de la réservation.<br><br>
+              <strong>5. Comportement :</strong> JROBS Musique se réserve le droit de refuser ou d'interrompre une
+              prestation en cas de comportement irrespectueux envers les musiciens.<br><br>
+              <strong>6. Responsabilité :</strong> JROBS Musique ne peut être tenu responsable des imprévus de force
+              majeure (conditions météorologiques extrêmes, urgences médicales, etc.).<br><br>
+              <strong>7. Confidentialité :</strong> Vos données personnelles sont utilisées uniquement dans le cadre de
+              votre réservation et ne sont jamais partagées avec des tiers.
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="accepte" required>
+              <label for="accepte" class="checkbox-label">
+                J'accepte les <a href="#" onclick="return false;">termes et conditions</a> ainsi que les politiques de
+                réservation de JROBS Musique. *
+              </label>
+            </div>
+
+            <button class="btn-submit" type="submit" id="submitBtn">
+              <span>Envoyer la demande</span>
+            </button>
+
+            <p
+              style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:16px; letter-spacing:0.04em;">
+              * Champs obligatoires — Nous vous contacterons dans les 24 heures.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-overlay" id="successContent">
+        <div class="success-icon">✓</div>
+        <h3>Demande envoyée!</h3>
+        <p>Merci pour votre demande. Notre équipe vous contactera dans les 24 heures pour confirmer votre réservation.
+        </p>
+        <button class="btn-open" style="margin-top:32px; opacity:1;" onclick="closeModal()">
+          <span>Fermer</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="deco-line" style="opacity:1; margin-bottom:16px;">
+      <div class="deco-diamond"></div>
+    </div>
+    © 2025 JROBS Musique — Tous droits réservés
+  </footer>
+
+  <script src="js/scrip.js"></script>
+</body>
+
+</html>
