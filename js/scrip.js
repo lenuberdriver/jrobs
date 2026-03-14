@@ -150,7 +150,7 @@ async function submitForm() {
     if (!accepte) errors.push('Veuillez accepter les termes et conditions.');
     if (!fieldsValid) errors.push('Veuillez corriger les champs en rouge.');
 
-    // if (errors.length) { alert(errors[0]); return; }
+     //if (errors.length) { alert(errors[0]); return; }
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
@@ -175,7 +175,7 @@ async function submitForm() {
         if (GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwPtpRryLYB7BLuUv9EiYYM3P1NKjiv-B-_f-7_PsC_ZFGIzuzZaz6cftkNDvCWi-KdGQ/exec') {
             const params = new URLSearchParams(formData);
             await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: params });
-            // await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 1000));
         }
 
         // Réinitialisation
