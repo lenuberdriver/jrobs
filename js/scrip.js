@@ -176,9 +176,10 @@ async function submitForm() {
         if (GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwPtpRryLYB7BLuUv9EiYYM3P1NKjiv-B-_f-7_PsC_ZFGIzuzZaz6cftkNDvCWi-KdGQ/exec') {
             const params = new URLSearchParams(formData);
             await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: params });
+            console.log(params);
             await new Promise(r => setTimeout(r, 1000));
         }
-
+        console.log('Skip google poste');
         // Réinitialisation
         document.getElementById('reservationForm').reset();
         for (const type of Object.keys(quantities)) {
