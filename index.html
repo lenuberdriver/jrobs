@@ -7,34 +7,39 @@
   <title>JROBS Musique — Demande de Musicien</title>
   <link rel="stylesheet" href="css/styles.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="jrobsmusique_banner.png" alt="JROBS Musique" class="navbar-logo">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer le thème">
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-label" id="toggleLabel">Mode clair</span>
+    </button>
+  </nav>
+
   <!-- HERO -->
   <section class="hero">
-    <div class="logo-mark">✦ Depuis 2010 ✦</div>
-    <h1>JROBS<span>Musique</span></h1>
-    <p class="hero-sub">Musiciens professionnels pour vos événements</p>
-    <div class="deco-line">
-      <div class="deco-diamond"></div>
-    </div>
+    <h1 class="hero-title">Musiciens professionnels<br><span>pour vos événements</span></h1>
+    <div class="hero-tagline">✦ Depuis 2010 ✦</div>
+    <p class="hero-sub">
+      Pianistes, guitaristes, bassistes, batteurs et saxophonistes
+      disponibles pour sublimer vos événements.
+    </p>
   </section>
 
   <!-- CTA -->
   <section class="cta-section">
-    <p class="cta-intro">
-      Donnez vie à votre événement avec nos musiciens d'exception.
-      Pianistes, guitaristes, bassistes, batteurs et saxophonistes
-      disponibles pour vos occasions spéciales.
-    </p>
-
     <button class="btn-open" onclick="openModal()">
       <span>Faire une demande</span>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round" />
       </svg>
     </button>
@@ -76,8 +81,9 @@
 
         <form id="reservationForm" novalidate>
           <div class="form-body">
+
             <!-- SERVICE -->
-            <div class="form-section-title">Service souhaité — sélectionnez le nombre de musiciens</div>
+            <div class="form-section-title">Service souhaité — nombre de musiciens</div>
             <div class="service-grid" id="serviceGrid">
               <div class="service-card" id="card-Pianiste">
                 <span class="svc-icon">🎹</span>
@@ -127,7 +133,7 @@
             </div>
             <div class="musicians-summary" id="musiciansSummary"></div>
 
-            <!-- éVéNEMENT -->
+            <!-- ÉVÉNEMENT -->
             <div class="form-section-title">Détails de l'événement</div>
             <div class="form-row triple">
               <div class="form-group">
@@ -142,7 +148,6 @@
                 <label for="duree">Durée *</label>
                 <select id="duree" required>
                   <option value="" disabled selected>Choisir</option>
-                  <option value="1h">1 heure</option>
                   <option value="2h">2 heures</option>
                   <option value="3h">3 heures</option>
                   <option value="4h">4 heures</option>
@@ -150,7 +155,7 @@
               </div>
             </div>
 
-            <!-- COORDONNéES -->
+            <!-- COORDONNÉES -->
             <div class="form-section-title">Coordonnées</div>
             <div class="form-row">
               <div class="form-group">
@@ -183,8 +188,7 @@
               <div class="form-group">
                 <label for="telephone">Téléphone *</label>
                 <input type="tel" id="telephone" placeholder="514-555-0123" required>
-                <span class="field-error" id="err-telephone">Format invalide (ex: 514-555-0123 ou +1 514 555
-                  0123)</span>
+                <span class="field-error" id="err-telephone">Format invalide (ex: 514-555-0123)</span>
               </div>
             </div>
 
@@ -207,17 +211,15 @@
             <!-- POLITIQUES -->
             <div class="form-section-title">Politiques et conditions</div>
             <div class="policies-box">
-              <strong style="color: var(--cream);">Politiques de réservation JROBS Musique</strong><br><br>
+              <strong>Politiques de réservation JROBS Musique</strong><br><br>
               <strong>1. Confirmation :</strong> Toute réservation est confirmée à la réception d'un acompte de 50% du
               montant total.<br><br>
               <strong>2. Annulation :</strong> Toute annulation effectuée moins de 72 heures avant l'événement ne sera
-              pas
-              remboursée. Pour les annulations au-delà de 72 heures, l'acompte sera remboursé en totalité.<br><br>
+              pas remboursée. Pour les annulations au-delà de 72 heures, l'acompte sera remboursé en totalité.<br><br>
               <strong>3. Déplacement :</strong> Les frais de déplacement hors de l'île de Montréal sont à la charge du
               client et seront calculés selon la distance.<br><br>
-              <strong>4. équipement :</strong> JROBS Musique fournit l'équipement de base. Tout équipement
-              supplémentaire
-              requis doit être mentionné au moment de la réservation.<br><br>
+              <strong>4. Équipement :</strong> JROBS Musique fournit l'équipement de base. Tout équipement
+              supplémentaire requis doit être mentionné au moment de la réservation.<br><br>
               <strong>5. Comportement :</strong> JROBS Musique se réserve le droit de refuser ou d'interrompre une
               prestation en cas de comportement irrespectueux envers les musiciens.<br><br>
               <strong>6. Responsabilité :</strong> JROBS Musique ne peut être tenu responsable des imprévus de force
@@ -239,7 +241,7 @@
             </button>
 
             <p
-              style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:16px; letter-spacing:0.04em;">
+              style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:14px; letter-spacing:.04em;">
               * Champs obligatoires — Nous vous contacterons dans les 24 heures.
             </p>
           </div>
@@ -249,7 +251,7 @@
       <!-- SUCCESS -->
       <div class="success-overlay" id="successContent">
         <div class="success-icon">✓</div>
-        <h3>Demande envoyée!</h3>
+        <h3>Demande envoyée !</h3>
         <p>Merci pour votre demande. Notre équipe vous contactera dans les 24 heures pour confirmer votre réservation.
         </p>
         <button class="btn-open" style="margin-top:32px; opacity:1;" onclick="closeModal()">
@@ -261,9 +263,6 @@
   </div>
 
   <footer>
-    <div class="deco-line" style="opacity:1; margin-bottom:16px;">
-      <div class="deco-diamond"></div>
-    </div>
     © 2025 JROBS Musique — Tous droits réservés
   </footer>
 
