@@ -151,6 +151,7 @@ async function submitForm() {
     if (!fieldsValid) errors.push('Veuillez corriger les champs en rouge.');
 
      //if (errors.length) { alert(errors[0]); return; }
+   if (errors.length) { alert(errors[0]); return; }
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
