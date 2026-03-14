@@ -140,7 +140,7 @@ async function submitForm() {
     };
 
     try {
-        if (GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros') {
+        if (GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwPtpRryLYB7BLuUv9EiYYM3P1NKjiv-B-_f-7_PsC_ZFGIzuzZaz6cftkNDvCWi-KdGQ/exec') {
             const params = new URLSearchParams(formData);
             await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: params });
             await new Promise(r => setTimeout(r, 1000));
