@@ -179,6 +179,8 @@ async function submitForm() {
       mode: 'no-cors',
       body: params
     });
+     
+    await new Promise(r => setTimeout(r, 1000));
 
     // Réinitialisation
     document.getElementById('reservationForm').reset();
